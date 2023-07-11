@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_11_050941) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_11_062152) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -255,12 +255,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_11_050941) do
 
   create_table "reports", force: :cascade do |t|
     t.string "comment"
-    t.decimal "cash"
-    t.decimal "terminal"
-    t.decimal "wolt"
+    t.decimal "cash", default: "0.0"
+    t.decimal "terminal", default: "0.0"
+    t.decimal "wolt", default: "0.0"
     t.bigint "restaurant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "expenses", default: "0.0"
     t.index ["restaurant_id"], name: "index_reports_on_restaurant_id"
   end
 
