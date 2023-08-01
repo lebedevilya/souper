@@ -1,12 +1,17 @@
+<%= link_to 'Back to main page', root_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 <div class="mx-auto md:w-2/3 w-full flex">
   <div class="mx-auto">
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
-
-    <div class="inline-block ml-2">
-    </div>
-    <%= link_to 'Back to orders', orders_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <% @restaurant.menu_categories.each do |category| %>
+      <h1><%= category.name %></h1>
+      <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 divide-y-0">
+        <% category.items.each do |item| %>
+          <%= render 'item', item: item %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

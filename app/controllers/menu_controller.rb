@@ -4,7 +4,6 @@ class MenuController < ApplicationController
   def show
     @order = Order.new(table: params[:table].to_i)
     @restaurant = Restaurant.find_by(name: params[:city])
-    @items = @restaurant.items
   end
 
   # POST /orders or /orders.json
