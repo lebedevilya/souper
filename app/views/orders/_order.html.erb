@@ -5,3 +5,9 @@
     <hr class="mt-6">
   <% end %>
 </div>
+
+<div>
+  <% @order.items.each do |item| %>
+    <p><%= item.name %></p> 
+  <% end %>
+</div>

@@ -18,14 +18,10 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
 
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to order_url(@order), notice: "Order was successfully created." }
-        format.json { render :show, status: :created, location: @order }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
+    if @order.save
+      redirect_to order_url(@order), notice: 'Order was successfully created.'
+    else
+      redirect_to "/menu/#{@order.restaurant.name}", status: :unprocessable_entity
     end
   end
 
@@ -53,13 +49,12 @@ class OrdersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_order
-      @order = Order.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def order_params
-      params.fetch(:order, {})
-    end
+  def set_order
+    @order = Order.find(params[:id])
+  end
+
+  def order_params
+    params.require(:order).permit(:restaurant_id, :table, order_items_attributes: [:menu_item_id, :quantity])
+  end
 end

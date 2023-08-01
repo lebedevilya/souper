@@ -4,7 +4,7 @@
 <% end %>
 <h1>Menu of <%= @restaurant.name %></h1>
 
-<%= form_with(model: @order, url: 'create_order') do |form| %>
+<%= form_with(model: @order) do |form| %>
   <% if @order.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
@@ -17,13 +17,18 @@
     </div>
   <% end %>
 
+  <div>
+    <%= form.label :table, 'Table number' %>
+    <%= form.number_field :table, class: 'form-control', required: true, min: 1, max: 20 %>
+  </div>
+  <%= form.hidden_field :restaurant_id %>
+
   <% @restaurant.menu_categories.each do |category| %>
     <h2><%= category.name %></h1>
     <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 divide-y-0">
       <% category.items.each do |item| %>
-        <%= hidden_field_tag "order[ordered_items][#{item.id}][item_id]", item.id %>
-        <%= hidden_field_tag "order[ordered_items][#{item.id}][item_id]", item.id %>
-        <%= hidden_field_tag "order[restaurant_id]", @restaurant.id %>
+        <%= hidden_field_tag "order[order_items_attributes][#{item.id}][menu_item_id]", item.id %>
+        <%= hidden_field_tag "order[order_items_attributes][#{item.id}][quantity]", 0 %>
 
         <div class="menu-item">
           <label>
@@ -85,7 +90,7 @@
         }
 
         quantityElement.textContent = quantity;
-        document.querySelector(`input[name="order[ordered_items][${itemId}][quantity]"]`).value = quantity;
+        document.querySelector(`input[name="order[order_items_attributes][${itemId}][quantity]"]`).value = quantity;
       });
     });
   });
