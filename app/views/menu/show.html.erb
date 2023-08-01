@@ -1,9 +1,55 @@
 <%= link_to 'Back to main page', root_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+<% if notice.present? %>
+  <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+<% end %>
+<h1>Menu of <%= @restaurant.name %></h1>
+
+<%= form_with(model: @order, url: 'create_order') do |form| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+        <% order.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% @restaurant.menu_categories.each do |category| %>
+    <h2><%= category.name %></h1>
+    <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 divide-y-0">
+      <% category.items.each do |item| %>
+        <%= hidden_field_tag "order[ordered_items][#{item.id}][item_id]", item.id %>
+        <%= hidden_field_tag "order[ordered_items][#{item.id}][item_id]", item.id %>
+        <%= hidden_field_tag "order[restaurant_id]", @restaurant.id %>
+
+        <div class="menu-item">
+          <label>
+            <%= item.name %> - <%= number_to_currency(item.price) %>
+          </label>
+        </div>
+        <div class="item-controls">
+          <button type="button" class="quantity-control" data-item-id="<%= item.id %>" data-action="minus">-</button>
+          <span class="quantity" data-item-id="<%= item.id %>">0</span>
+          <button type="button" class="quantity-control" data-item-id="<%= item.id %>" data-action="plus">+</button>
+        </div>
+
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>
+
+
+
+
 <div class="mx-auto md:w-2/3 w-full flex">
   <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
 
     <% @restaurant.menu_categories.each do |category| %>
       <h1><%= category.name %></h1>
@@ -15,3 +61,32 @@
     <% end %>
   </div>
 </div>
+
+
+<!-- Add this JavaScript code at the bottom of the same view or create a separate JS file -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const quantityControls = document.querySelectorAll(".quantity-control");
+    const quantities = document.querySelectorAll(".quantity");
+
+    quantityControls.forEach((control) => {
+      control.addEventListener("click", function () {
+        const action = this.dataset.action;
+        const itemId = this.dataset.itemId;
+        const quantityElement = document.querySelector(`.quantity[data-item-id="${itemId}"]`);
+        let quantity = parseInt(quantityElement.textContent, 10);
+
+        if (action === "plus") {
+          quantity += 1;
+        } else if (action === "minus") {
+          if (quantity > 0) {
+            quantity -= 1;
+          }
+        }
+
+        quantityElement.textContent = quantity;
+        document.querySelector(`input[name="order[ordered_items][${itemId}][quantity]"]`).value = quantity;
+      });
+    });
+  });
+</script>

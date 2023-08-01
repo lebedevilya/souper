@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   root 'pages#show', page: 'home'
 
   get '/menu/:city', to: 'menu#show', constraints: { table: /\d+/ }
+  post '/menu/:city', to: 'menu#create_order', constraints: { table: /\d+/ }
+
+  resources :orders, except: [:index]
 end
