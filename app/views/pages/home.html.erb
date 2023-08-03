@@ -27,16 +27,16 @@
         <li class="mr-3">
           <a
             @click="isOpen = false"
-            class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
-            href="meniu.html"
+            class="inline-block text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
+            href="/menu/tbilisi"
           >MENU
           </a>
         </li>
         <li class="mr-3">
           <a
             @click="isOpen = false"
-            class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
-            href="contact.html"
+            class="inline-block text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
+            href="contact"
           >CONTACT
           </a>
         </li>
@@ -46,7 +46,7 @@
   <!-- Background Element -->
   <div class="absolute bg-cover bg-center z-10 w-full h-full object-cover" style="background-image: url('<%= image_path("/pho.svg") %>')">
     <div class="absolute inset-0 bg-black opacity-50"></div>
-    <div class="flex items-center justify-center h-full">
+    <div class="max-sm:pl-4 max-sm:pt-32 flex items-center justify-center h-full">
       <h1 class="text-white text-8xl -mt-24 font-bold z-10">Souper Cafe</h1>
     </div>
   </div>
@@ -72,7 +72,7 @@
         <button class="px-3 py-4">
           <a
             class="px-3 py-4 bg-black text-white font-sans uppercase tracking-widest border hover:text-black hover:bg-white hover:border-black transition duration-300"
-            href="meniu.html">Go to menu</a>
+            href="/menu/tbilisi">Go to menu</a>
         </button>
       </div>
     </div>
@@ -138,7 +138,7 @@
       ">
       <div class="flex flex-wrap -mx-8 text-white">
         <div class="w-full lg:w-1/2 px-8 flex">
-          <div class="my-auto">
+          <div class="my-auto ">
             <h2 class="text-3xl lg:text-4xl font-semibold uppercase">Pay us a visit :</h2>
             <p class="mt-2 leading-loose font-sans uppercase tracking-wide font-bold">Souper Cafe</p>
             <p class="mt-2 mb-6 leading-loose">24 Tamar Chovelidze St, Tbilisi 0108, Georgia</p>
@@ -146,12 +146,14 @@
             <p class="mt-2 mb-6 leading-loose">
               +995 591 06 26 97
             </p>
+            <div class="max-sm:items-center text-center">
             <a
-              class="inline-block py-4 px-8 text-xs border bg-black text-white uppercase tracking-widest font-semibold leading-none hover:bg-white hover:border-white hover:text-black rounded-none transition duration-300"
+              class="inline-block py-4 px-8 text-xs border max-sm:w-full bg-black text-white uppercase tracking-widest font-semibold leading-none hover:bg-white hover:border-white hover:text-black rounded-none transition duration-300"
               href="https://wolt.com/en/geo/tbilisi/restaurant/souper-kitchen-bar">Order with Wolt</a>
             <a
-              class="inline-block py-4 px-8 ml-2 text-xs border bg-black text-white uppercase tracking-widest font-semibold leading-none hover:bg-white hover:border-white hover:text-black rounded-none transition duration-300"
+              class="inline-block py-4 px-8 max-sm:mt-4 max-sm:w-full sm:ml-2 text-xs border bg-black text-white uppercase tracking-widest font-semibold leading-none hover:bg-white hover:border-white hover:text-black rounded-none transition duration-300"
               href="https://glovoapp.com/ge/en/tbilisi/tiki-bar-tbi/">Order with Glovo</a>
+            </div>
           </div>
         </div>
         <div class="w-full lg:w-1/2 px-8 mt-12 lg:mt-0">
@@ -167,9 +169,9 @@
 <footer class="container mx-auto">
   <div class="flex flex-wrap-reverse lg:flex-nowrap items-center justify-center lg:justify-between">
     <div class="flex justify-center items-center w-full lg:w-1/4">
-      <%= image_tag '/idol.png', alt: 'logo', class: 'h-40 lg:h-60' %>
+      <%= image_tag '/idol.png', alt: 'logo', class: 'max-sm:h-48 h-60 ml-6' %>
     </div>
-    <div class="flex justify-center h-64 w-full ml-10 lg:-ml-0 lg:w-1/4">
+    <div class="sm:flex sm:justify-center h-64 w-full ml-10 lg:-ml-0 lg:w-1/4">
       <ul>
         <li class="font-sans text-2xl font-bold tracking-wide pb-4">FIND US</li>
         <li class="font-sans font-bold text-lg py-2">Address:</li>
@@ -178,7 +180,7 @@
         <li>+995 591 06 26 97</li>
       </ul>
     </div>
-    <div class="flex justify-center h-64 w-full ml-10 lg:-ml-0 lg:w-1/4">
+    <div class="sm:flex sm:justify-center h-64 w-full ml-10 lg:-ml-0 lg:w-1/4">
       <ul>
         <li class="font-sans text-2xl font-bold tracking-wide pb-4">SOCIAL</li>
         <li class="font-sans font-bold text-lg py-2">Find us on social</li>
@@ -190,7 +192,7 @@
   </div>
   <div class="flex justify-center">
     <p class="text-sm mb-4">
-      <a href="https://ilyalebe.dev">Dev by ilyalebe.dev</a>
+      <a href="https://ilyalebe.dev">Crafted by ilyalebe.dev</a>
     </p>
   </div>
 </footer>
