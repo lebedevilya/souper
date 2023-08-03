@@ -2,7 +2,7 @@
   <%= image_tag item.image %>
   <h2 class="font-sans text-3xl tracking-widest uppercase mb-2"><%= item.name %></h2>
   <div class="px-20 text-center">
-    <p><%= number_to_currency(item.price) %></p>
+    <p><%= number_to_currency(item.price, unit: item.category.restaurant.currency, format: "%u %n") %></p>
     <p><%= item.description %></p>
   </div>
 </div>
