@@ -7,7 +7,6 @@
 <h1>Menu of <%= @restaurant.name %></h1>
 
 <%= form_with(model: @order) do |form| %>
-  <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
     <% if @order.errors.any? %>
       <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
         <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
@@ -29,6 +28,7 @@
     <!-- MENU ITEMS -->
     <% @restaurant.menu_categories.each do |category| %>
       <h2><%= category.name %></h2>
+      <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
       <% category.items.each do |item| %>
         <div class="rounded-lg bg-gray-100">
           <%= hidden_field_tag "order[order_items_attributes][#{item.id}][menu_item_id]", item.id %>
@@ -44,13 +44,13 @@
           </div>
         </div>
       <% end %>
+    </div>
     <% end %>
     <!-- MENU ITEMS -->
 
     <div class="inline">
       <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
     </div>
-  </div>
 <% end %>
 
 <!-- Add this JavaScript code at the bottom of the same view or create a separate JS file -->
