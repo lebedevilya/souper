@@ -6,14 +6,16 @@
   <nav
     class="relative z-20 top-0 right-0 w-full inline-block px-10 pt-5 text-2xl text-white">
     <div class="flex justify-between items-center">
-      <%= image_tag '/idol.png', alt: 'logo', class: 'h-32 lg:h-40' %>
+      <%= link_to root_path do %>
+        <%= image_tag '/idol.png', alt: 'logo', class: 'h-32 lg:h-40' %>
+      <% end %>
       <div class="hidden lg:block">
         <ul class="flex">
           <li class="px-4 py-4">
             <a class="tracking-widest" href="/menu/tbilisi">MENU</a>
           </li>
           <li class="px-4 py-4">
-            <a class="tracking-widest" href="contact">CONTACT</a>
+            <a class="tracking-widest" href="https://ig.me/m/soupercafe_tbilisi" target="_blank">CONTACT</a>
           </li>
         </ul>
       </div>
@@ -47,7 +49,7 @@
   <div class="absolute bg-cover bg-center z-10 w-full h-full object-cover" style="background-image: url('<%= image_path("/pho.svg") %>')">
     <div class="absolute inset-0 bg-black opacity-50"></div>
     <div class="max-sm:pl-4 max-sm:pt-32 flex items-center justify-center h-full">
-      <h1 class="text-white text-8xl -mt-24 font-bold z-10">Souper Cafe</h1>
+      <h1 class="text-white max-sm:text-7xl text-8xl -mt-24 font-bold z-10">Souper Cafe</h1>
     </div>
   </div>
 
@@ -61,7 +63,7 @@
   <section class="py-20">
     <div class="flex flex-wrap md:flex-nowrap p-5">
       <div class="flex items-center justify-center p-5 mx-auto w-full lg:w-1/2">
-        <%= image_tag '/photos/chicken.jpg', alt: 'menu image' %>
+        <%= image_tag '/photos/chicken.jpeg', alt: 'menu image' %>
       </div>
       <div class="flex flex-col p-5 items-center text-center justify-center w-full lg:w-1/2">
         <h2 class="text-4xl tracking-widest uppercase pb-5" data-scroll>Discover our menu</h2>
@@ -80,7 +82,7 @@
   <section class="py-10">
     <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 divide-y-0">
       <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
-        <%= image_tag '/photos/tom.jpg', alt: 'pho-bo', class: 'h-64 m-5' %>
+        <%= image_tag '/photos/tom.jpeg', alt: 'pho-bo', class: 'h-64 m-5' %>
         <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">Eat</h2>
         <div class="px-20 text-center">
           <p> Maecenas erat nisl, porta
@@ -92,7 +94,7 @@
         </div>
       </div>
       <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
-        <%= image_tag '/photos/cocktail2.jpg', alt: 'cocktail', class: 'h-64 m-5' %>
+        <%= image_tag '/photos/cocktail2.jpeg', alt: 'cocktail', class: 'h-64 m-5' %>
         <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">Drink</h2>
         <div class="px-20 text-center">
           <p> Maecenas erat nisl, porta
@@ -104,7 +106,7 @@
         </div>
       </div>
       <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
-        <%= image_tag '/photos/beer.jpg', alt: 'cocktail', class: 'h-64 m-5' %>
+        <%= image_tag '/photos/beer.jpeg', alt: 'cocktail', class: 'h-64 m-5' %>
         <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">Chill</h2>
         <div class="px-20 text-center">
           <p> Maecenas erat nisl, porta
@@ -127,7 +129,7 @@
           nec.</p>
       </div>
       <div class="flex items-center justify-center p-5 mx-auto w-full lg:w-1/2">
-        <%= image_tag '/photos/cocktail1.jpg' %>
+        <%= image_tag '/photos/cocktail1.jpeg' %>
       </div>
     </div>
   </section>
@@ -190,11 +192,15 @@
       </ul>
     </div>
   </div>
-  <div class="flex justify-center">
-    <p class="text-sm mb-4">
-      <a href="https://ilyalebe.dev">Crafted by ilyalebe.dev</a>
-    </p>
-  </div>
+<div class="flex justify-center items-center py-2">
+  <p class="text-sm mb-4">
+    <a href="https://ilyalebe.dev" class="text-gray-600 hover:text-gray-900 transition-colors duration-300 ease-in-out">
+      Crafted by <span class="font-bold">ilyalebe.dev</span>
+    </a>
+  </p>
+</div>
+
+
 </footer>
 
 

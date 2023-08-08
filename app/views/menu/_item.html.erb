@@ -1,8 +1,17 @@
-<div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
+<div class="bg-white flex flex-col overflow-hidden items-center justify-center rounded-lg shadow transition hover:shadow-lg">
   <%= image_tag item.image %>
-  <h2 class="font-sans text-3xl tracking-widest mb-2"><%= item.name %></h2>
-  <div class="px-20 text-center">
+
+  <div class="bg-white p-4 sm:p-6">
+    <h3 class="mt-0.5 text-lg text-gray-900">
+      <%= item.name %>
+    </h3>
+
     <p><%= number_to_currency(item.price, unit: item.category.restaurant.currency, format: "%u %n") %></p>
-    <p><%= item.description %></p>
+    <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500"><%= item.description %></p>
+  </div>
+  <div class="item-controls">
+    <button type="button" class="quantity-control" data-item-id="<%= item.id %>" data-action="minus">-</button>
+    <span class="quantity" data-item-id="<%= item.id %>">0</span>
+    <button type="button" class="quantity-control" data-item-id="<%= item.id %>" data-action="plus">+</button>
   </div>
 </div>
