@@ -1,17 +1,32 @@
-<div class="bg-white flex flex-col overflow-hidden items-center justify-center rounded-lg shadow transition hover:shadow-lg h-[30rem]">
-  <%= image_tag item.image %>
-
-  <div class="bg-white p-4 sm:p-6">
-    <h3 class="mt-0.5 text-lg text-gray-900">
-      <%= item.name %>
-    </h3>
-
-    <p><%= number_to_currency(item.price, unit: item.category.restaurant.currency, format: "%u %n") %></p>
-    <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500"><%= item.description %></p>
+<div class="group relative block">
+  <div class="relative h-[350px] sm:h-[450px]">
+    <%= image_tag item.image, class: "absolute inset-0 h-full w-full object-cover"%>
   </div>
-  <div class="item-controls -mt-4">
-    <button type="button" class="quantity-control" data-item-id="<%= item.id %>" data-action="minus">-</button>
-    <span class="quantity" data-item-id="<%= item.id %>">0</span>
-    <button type="button" class="quantity-control" data-item-id="<%= item.id %>" data-action="plus">+</button>
+
+  <div class="absolute inset-0 flex flex-col items-start justify-end p-6">
+    <div class="block relative rounded px-5 py-3">
+      <div class="absolute inset-0 bg-black opacity-50 rounded"></div> <!-- Semi-transparent background -->
+      <h3 class="text-xl font-medium text-white relative z-10"> <!-- Higher z-index to keep text on top -->
+        <%= item.name %>
+      </h3>
+      <p class="font-medium text-white relative z-10"> <!-- Higher z-index to keep text on top -->
+        <%= number_to_currency(item.price, unit: item.category.restaurant.currency, format: "%u %n") %>
+      </p>
+      
+      <p class="mt-1.5 max-w-[40ch] text-xs text-white relative z-10"> <!-- Higher z-index to keep text on top -->
+        <%= item.description %>
+      </p>
+    </div>
+
+    <span class="mt-3 inline-block bg-black px-10 py-3 text-xs font-medium uppercase tracking-wide text-white">
+      Add
+    </span>
   </div>
 </div>
+
+<!--     <div class="item-controls">
+      <button type="button" class="quantity-control" data-item-id="<%= item.id %>" data-action="minus">-</button>
+      <span class="quantity" data-item-id="<%= item.id %>">0</span>
+      <button type="button" class="quantity-control" data-item-id="<%= item.id %>" data-action="plus">+</button>
+    </div>
+ -->  
