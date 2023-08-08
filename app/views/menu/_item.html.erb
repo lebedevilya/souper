@@ -1,4 +1,4 @@
-<div class="bg-white flex flex-col overflow-hidden items-center justify-center rounded-lg shadow transition hover:shadow-lg">
+<div class="bg-white flex flex-col overflow-hidden items-center justify-center rounded-lg shadow transition hover:shadow-lg h-[30rem]">
   <%= image_tag item.image %>
 
   <div class="bg-white p-4 sm:p-6">
@@ -9,7 +9,7 @@
     <p><%= number_to_currency(item.price, unit: item.category.restaurant.currency, format: "%u %n") %></p>
     <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500"><%= item.description %></p>
   </div>
-  <div class="item-controls">
+  <div class="item-controls -mt-4">
     <button type="button" class="quantity-control" data-item-id="<%= item.id %>" data-action="minus">-</button>
     <span class="quantity" data-item-id="<%= item.id %>">0</span>
     <button type="button" class="quantity-control" data-item-id="<%= item.id %>" data-action="plus">+</button>
