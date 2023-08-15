@@ -1,6 +1,6 @@
 <div class="group relative block">
   <div class="relative h-[350px] sm:h-[450px]">
-    <%= image_tag item.image, class: "absolute inset-0 h-full w-full object-cover"%>
+    <%= image_tag item.image.variant(resize_to_limit: [700, 700], saver: { strip: true, compression: 9 }), class: "absolute inset-0 h-full w-full object-cover"%>
   </div>
 
   <div class="absolute inset-0 flex flex-col items-start justify-end p-6">
