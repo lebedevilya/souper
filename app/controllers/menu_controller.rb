@@ -3,7 +3,7 @@
 class MenuController < ApplicationController
   def show
     @restaurant = Restaurant.find_by(name: params[:city])
-    @order = Order.new(restaurant: @restaurant, table: params[:table])
+    @order = Order.new(restaurant: @restaurant, table: params[:table]) if params[:table].present?
   end
 
   private

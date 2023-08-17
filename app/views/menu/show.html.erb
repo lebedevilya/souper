@@ -14,7 +14,7 @@
   <% end %>
 
   <%= form_with(model: @order) do |form| %>
-      <% if @order.errors.any? %>
+      <% if @order && @order.errors.any? %>
         <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
           <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
 
@@ -26,11 +26,13 @@
         </div>
       <% end %>
 
-      <div class="p-5">
-        <%= form.label :table, 'Table number' %>
-        <%= form.number_field :table, class: 'form-control', required: true, min: 1, max: 20 %>
-      </div>
-      <%= form.hidden_field :restaurant_id %>
+      <% if @order.present? %>
+        <div class="p-5">
+          <%= form.label :table, 'Table number' %>
+          <%= form.number_field :table, class: 'form-control', required: true, min: 1, max: 20 %>
+        </div>
+        <%= form.hidden_field :restaurant_id %>
+      <% end %>
 
       <!-- MENU ITEMS -->
       <% @restaurant.menu_categories.includes(:items).each do |category| %>
@@ -52,9 +54,11 @@
       <% end %>
       <!-- MENU ITEMS -->
 
+    <% if @order.present? %>
       <div class="inline p-5">
-        <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+        <%= form.submit "Create order", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
       </div>
+    <% end %>
   <% end %>
 </main>
 
