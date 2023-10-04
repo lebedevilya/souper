@@ -26,16 +26,8 @@
         </div>
       <% end %>
 
-      <% if @order.present? %>
-        <div class="p-5">
-          <%= form.label :table, 'Table number' %>
-          <%= form.number_field :table, class: 'form-control', required: true, min: 1, max: 20 %>
-        </div>
-        <%= form.hidden_field :restaurant_id %>
-      <% end %>
-
       <!-- MENU ITEMS -->
-      <% @restaurant.menu_categories.includes(items: :options).each do |category| %>
+      <% @restaurant.menu_categories.includes(:items).each do |category| %>
         <div class="p-5">
           <h2 class="text-3xl my-4"><%= category.name %></h2>
           <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-4 lg:grid-cols-4 lg:gap-8">
@@ -52,40 +44,5 @@
           </div>
         </div>
       <% end %>
-      <!-- MENU ITEMS -->
-
-    <% if @order.present? %>
-      <div class="inline p-5">
-        <%= form.submit "Create order", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-      </div>
-    <% end %>
   <% end %>
 </main>
-
-<!-- Add this JavaScript code at the bottom of the same view or create a separate JS file -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const quantityControls = document.querySelectorAll(".quantity-control");
-    const quantities = document.querySelectorAll(".quantity");
-
-    quantityControls.forEach((control) => {
-      control.addEventListener("click", function () {
-        const action = this.dataset.action;
-        const itemId = this.dataset.itemId;
-        const quantityElement = document.querySelector(`.quantity[data-item-id="${itemId}"]`);
-        let quantity = parseInt(quantityElement.textContent, 10);
-
-        if (action === "plus") {
-          quantity += 1;
-        } else if (action === "minus") {
-          if (quantity > 0) {
-            quantity -= 1;
-          }
-        }
-
-        quantityElement.textContent = quantity;
-        document.querySelector(`input[name="order[order_items_attributes][${itemId}][quantity]"]`).value = quantity;
-      });
-    });
-  });
-</script>
