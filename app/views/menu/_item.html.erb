@@ -4,10 +4,10 @@
   </div>
   <% if item.options.any? %>
     <div class="absolute top-0 right-0 p-4">
-      <div class="block relative rounded px-5 py-3">
+      <div class="block relative rounded px-3 py-1">
         <div class="absolute inset-0 bg-black opacity-50 rounded"></div> <!-- Semi-transparent background -->
         <% item.options.each do |option| %>
-          <p class="text-sm font-medium text-white relative z-10"> <!-- Higher z-index to keep text on top -->
+          <p class="text-xs font-medium text-white relative z-10"> <!-- Higher z-index to keep text on top -->
             <%= option.name %>
             +<%= option.price.to_i %>
           </p>
