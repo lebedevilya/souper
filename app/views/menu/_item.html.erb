@@ -2,18 +2,19 @@
   <div class="relative h-[350px] sm:h-[450px]">
     <%= image_tag item.image.variant(resize_to_limit: [700, 700], saver: { strip: true, compression: 9 }), class: "absolute inset-0 h-full w-full object-cover"%>
   </div>
-  <div class="absolute top-0 right-0 p-4">
-    <div class="block relative rounded px-2 py-2">
-      <% if item.options.any? %>
+  <% if item.options.any? %>
+    <div class="absolute top-0 right-0 p-4">
+      <div class="block relative rounded px-5 py-3">
+        <div class="absolute inset-0 bg-black opacity-50 rounded"></div> <!-- Semi-transparent background -->
         <% item.options.each do |option| %>
-          <p class="font-medium text-white relative z-10"> <!-- Higher z-index to keep text on top -->
+          <p class="text-sm font-medium text-white relative z-10"> <!-- Higher z-index to keep text on top -->
             <%= option.name %>
             +<%= option.price.to_i %>
           </p>
         <% end %>
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <div class="absolute inset-0 flex flex-col items-start justify-end p-6">
     <div class="block relative rounded px-5 py-3">
