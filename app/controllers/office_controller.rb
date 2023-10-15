@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OfficeController < ApplicationController
   def show
     @restaurant = Restaurant.find_by(name: 'tbilisi')
