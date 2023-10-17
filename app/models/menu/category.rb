@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Menu::Category < ApplicationRecord
+  extend Mobility
+  translates :name
+
   belongs_to :restaurant
   has_many :items, dependent: :destroy, class_name: 'Menu::Item', foreign_key: 'menu_category_id'
 

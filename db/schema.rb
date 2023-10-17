@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_04_164717) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_17_190743) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,6 +48,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_164717) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "position", null: false
+    t.string "name_en"
+    t.string "name_ge"
+    t.string "name_ru"
     t.index ["restaurant_id"], name: "index_menu_categories_on_restaurant_id"
   end
 
@@ -57,6 +60,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_164717) do
     t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name_en"
+    t.string "name_ge"
+    t.string "name_ru"
     t.index ["menu_item_id"], name: "index_menu_item_options_on_menu_item_id"
   end
 
@@ -69,6 +75,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_164717) do
     t.datetime "updated_at", null: false
     t.text "description"
     t.integer "position", null: false
+    t.string "name_en"
+    t.string "name_ge"
+    t.string "name_ru"
+    t.string "description_en"
+    t.string "description_ge"
+    t.string "description_ru"
     t.index ["menu_category_id"], name: "index_menu_items_on_menu_category_id"
   end
 
@@ -302,6 +314,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_164717) do
     t.string "currency", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name_en"
+    t.string "name_ge"
+    t.string "name_ru"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

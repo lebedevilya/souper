@@ -7,6 +7,9 @@
     <%= image_tag '/idol.png', alt: 'logo', class: 'h-32 lg:h-40' %>
   <% end %>
 </div>
+<div class="flex items-center justify-center">
+  <%= render 'locale' %>
+</div>
 
 <main class="container mx-auto">
   <% if notice.present? %>
