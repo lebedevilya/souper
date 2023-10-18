@@ -39,21 +39,7 @@
 
       <!-- MENU ITEMS -->
       <% @restaurant.menu_categories.includes(items: :options).each do |category| %>
-        <div class="p-5">
-          <h2 class="text-3xl my-4"><%= category.name %></h2>
-          <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-4 lg:grid-cols-4 lg:gap-8">
-            <% category.items.with_attached_image.each do |item| %>
-              <div class="rounded-lg bg-white">
-                <%= hidden_field_tag "order[order_items_attributes][#{item.id}][menu_item_id]", item.id %>
-                <%= hidden_field_tag "order[order_items_attributes][#{item.id}][quantity]", 0 %>
-
-                <div class="menu-item">
-                    <%= render 'item', item: item %>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        </div>
+        <%= render 'category', category: category %>
       <% end %>
       <!-- MENU ITEMS -->
 
