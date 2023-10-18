@@ -9,7 +9,7 @@ class Menu::Item < ApplicationRecord
   has_many :options, class_name: 'Menu::Item::Option', foreign_key: 'menu_item_id', dependent: :destroy
   has_one_attached :image
 
-  default_scope { order(position: :asc) }
+  default_scope { order(position: :asc, availability: true) }
 
   before_save :set_position
 
