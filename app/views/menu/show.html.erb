@@ -39,7 +39,7 @@
 
       <!-- MENU ITEMS -->
       <% @restaurant.menu_categories.includes(items: :options).each do |category| %>
-        <%= render 'category', category: category %>
+        <%= render category %>
       <% end %>
       <!-- MENU ITEMS -->
 
