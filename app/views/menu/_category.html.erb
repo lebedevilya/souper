@@ -29,7 +29,7 @@
           <%= hidden_field_tag "order[order_items_attributes][#{item.id}][quantity]", 0 %>
 
           <div class="menu-item">
-              <%= render item %>
+            <%= render 'item', item: item %>
           </div>
         </div>
       <% end %>
