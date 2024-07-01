@@ -296,7 +296,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_17_190753) do
   end
 
   create_table "reports", force: :cascade do |t|
-    t.string "comment"
+    t.text "comment"
     t.decimal "cash", default: "0.0"
     t.decimal "terminal", default: "0.0"
     t.decimal "wolt", default: "0.0"
